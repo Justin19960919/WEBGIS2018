@@ -56,6 +56,8 @@
 	<div class="form-group mb-3">
 		  <label  for="selectday" style='font-size:20px;color:white' >日期</label>
 		  <select class="form-control" id="selectday">
+			<option value="">全部</option> 
+			<option value="">若要選擇請先選擇月份!</option> 
 		  </select>
 	</div>
 	
