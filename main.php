@@ -13,7 +13,7 @@
 		<div class="navbar-header">
 			<ul class="nav navbar-nav ">
 				<!--button type="button"--> 
-				<li><id="download_all" style='height:50px;line-height:50px;'>阿伯拖吊紀錄下載</a></li>
+				<li><a id="download_all" type="button" style='height:50px;line-height:50px;'>阿伯拖吊紀錄下載</a></li>
 		</div>
 	  
 		<ul class="nav navbar-nav navbar-right">
@@ -138,13 +138,3 @@
 <script src="./js/map.js"></script>         <!-- include map.js here because it must appear after <div id="map"> -->
 <script src="./js/main.js"></script>
 <script src="./js/draw.js"></script>
-<script>
-	$(function(){
-		$('#calBtn').click(function(){
-			$('#dialog1').modal('show')
-		});
-		$('#cancelBtn').click(function(){
-			$('#dialog1').modal('hide')
-		});
-	});
-</script>

@@ -4,11 +4,26 @@ $(function() {
       $("#accordion").accordion("option", { active: 0 });
       updateSize();
   });
+  
   $("#btn-hide").click(function() {
       $("#sidebar").hide();
       updateSize();
   });
+  
+  $('#calBtn').click(function(){
+	  $('#dialog1').modal('show')
+  });
+  
+  $('#cancelBtn').click(function(){
+	  $('#dialog1').modal('hide')
+  });
 
+   $("#download_all").click(function() {
+     $.get("download.php",function(data,status){
+       alert("Data:"+ data + "\nStatus: " + status);
+      });
+  });
+  
   $(window).resize(function() {
       updateSize();
   });  
@@ -33,13 +48,7 @@ var weekday=$('#inputGroupSelect01').val();
 var inDay=$('#inputGroupSelect02').val();
 var month=$('#inputGroupSelect03').val();
 */
-$(function() {
-  $("#download_all").click(function() {
-      $.get("download.php",function(data,status){
-        alert("Data:"+ data + "\nStatus: " + status);
-      });
-  });
-});
+
 
 
 
