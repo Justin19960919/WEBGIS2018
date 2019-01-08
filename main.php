@@ -1,3 +1,4 @@
+<!-----------------------------------------------Nav----------------------------------------------------->
 <nav class="nav navbar-inverse" style='overflow:hidden;position:fixed;bottom:0;width:100%;'>
   <div class="container-fluid">
     <div class="navbar-header">
@@ -24,48 +25,58 @@
     </div>
   </div>
 </nav> 
-
+<!-----------------------------------------------SideBar----------------------------------------------------->
 <div id="container" style='height: 100%;'>
-  <div id="sidebar" style=" background-color:rgba(0,0,0,0.2)">
+  <div id="sidebar" style=" background-color:rgba(0,0,0,0.8)">
+  	<script>
+	days = new Array(31,28,31,30,31,30,31,31,30,31,30,31);
+	function changeday(selectID, amonth)
+	{
+		while (document.all(selectID).options.length > 0) document.all(selectID).remove(0);
+		for (var i = 1; i <= days[amonth-1]; i++)
+		{
+		  var nOption = document.createElement("OPTION");
+		  nOption.text=i;
+		  nOption.value=i;
+		  document.all(selectID).add(nOption);
+		}
+	}
+	</script>
+  	<div class="form-group mb-3">
+		  <label  for="selectmonth" style='font-size:20px;color:white' >月份</label>
+		  <select class="form-control" id="selectmonth" onchange="changeday('selectday', this.value)">
+		    <option value="All">全部</option> 
+			<option value="9">9月</option>
+			<option value="10">10月</option>
+			<option value="11">11月</option>
+		  </select>
+	</div>
+  
 
 	<div class="form-group mb-3">
-		  <label  for="inputGroupSelect01" style='font-size:20px'>星期</label>
-		  <select class="form-control" id="inputGroupSelect01">
-			<option value="1">一</option>
-			<option value="2">二</option>
-			<option value="3">三</option>
-			<option value="4">四</option>
-			<option value="5">五</option>
-			<option value="6">六</option>
-			<option value="7">日</option>
-			<option value="7">整星期</option>		
+		  <label  for="selectday" style='font-size:20px;color:white' >日期</label>
+		  <select class="form-control" id="selectday">
 		  </select>
 	</div>
 	
 	<div class="form-group mb-3">
-		  <label  for="inputGroupSelect01" style='font-size:20px'>時間</label>
+		  <label  for="inputGroupSelect01" style='font-size:20px;color:white'>時間</label>
 		  <select class="form-control" id="inputGroupSelect01">
-			<option value="1">上午</option>
-			<option value="2">中午</option>
-			<option value="3">下午</option>
-			<option value="4">晚上</option>
-			<option value="5">全天</option>
+		    <option value="dayAll">全天</option>
+			<option value="morning">上午</option>
+			<option value="noon">中午</option>
+			<option value="afternoon">下午</option>
+			<option value="night">晚上</option>
+			
 		  </select>
 	</div>
-	
-	<div class="form-group mb-3">
-		  <label  for="inputGroupSelect01" style='font-size:20px'>月份</label>
-		  <select class="form-control" id="inputGroupSelect01">
-			<option value="1">9月</option>
-			<option value="2">10月</option>
-			<option value="3">11月</option>
-		  </select>
-	</div>
+	<button class="btn btn-primary" style="font-size:20px" >篩選</button>
+
   
   </div>
   <div id="map"></div>
 </div>
-
+<!-----------------------------------------------modal--------------------------------------------------->	
 <div class='modal ' id='dialog1' tabindex='-1' role='dialog' >
 	<div class='modal-dialog modal-dialog-centered' role='document'>
 		<div class='modal-content' style="background-color:rgb(250,214,137);">
@@ -120,6 +131,7 @@
 			</div>
 		</div>
 	</div>
+	<!-----------------------------------------------script--------------------------------------------------->	
 <script src="./js/map.js"></script>         <!-- include map.js here because it must appear after <div id="map"> -->
 <script src="./js/main.js"></script>
 <script src="./js/draw.js"></script>
