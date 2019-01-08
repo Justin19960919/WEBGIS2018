@@ -13,7 +13,7 @@
 		<div class="navbar-header">
 			<ul class="nav navbar-nav ">
 				<!--button type="button"--> 
-				<li><a id="download_all" type="button" style='height:50px;line-height:50px;'>阿伯拖吊紀錄下載</a></li>
+				<li><a href='download.php?hello=true' type="button" style='height:50px;line-height:50px;'>阿伯拖吊紀錄下載</a></li>
 		</div>
 	  
 		<ul class="nav navbar-nav navbar-right">

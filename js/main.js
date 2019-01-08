@@ -17,12 +17,24 @@ $(function() {
   $('#cancelBtn').click(function(){
 	  $('#dialog1').modal('hide')
   });
+  /*
+  $("#download_all").click(function() {
 
-   $("#download_all").click(function() {
-     $.get("download.php",function(data,status){
-       alert("Data:"+ data + "\nStatus: " + status);
-      });
+    
+    var getdata="getdata"    
+    $.ajax({
+      url:"download.php",
+      type: 'POST',
+      data:{"getdata":getdata},  
+      success: function() {       
+          console.log("Connected to DB and downloaded data.");
+        },
+      error: function(){
+          console.log('ajax error');
+        }
+    });
   });
+  */
   
   $(window).resize(function() {
       updateSize();
@@ -47,9 +59,31 @@ function updateSize(){
 var weekday=$('#inputGroupSelect01').val();
 var inDay=$('#inputGroupSelect02').val();
 var month=$('#inputGroupSelect03').val();
+
+$(function() {
+
+  $("#download_all").click(function() {
+    
+    $.ajax({
+    url: "download.php",
+    type: 'POST', 
+    //post to download.php query selections
+
+    success: function(result) {
+          
+          console.log("Connected to DB and downloaded data.");
+        },
+    error: function(){
+          console.log('ajax error');
+        }
+    
+    $.get("download.php");
+
+
+  });
+
+});
+
 */
-
-
-
 
 

@@ -1,10 +1,12 @@
 <?php
-
+/*
 $weekday = $_POST['weekday'];
 $inDay = $_POST['inDay'];
 $month = $_POST['month'];
+*/
 
 
+function runmyfunction(){
 $db_servername = "127.0.0.1";     //localhost
 $db_username = "justin";
 $db_password = "justin0919";
@@ -68,8 +70,12 @@ header('Content-Type: application/json;charset=utf-8');
 header('Content-Disposition:attachment;filename=Download.json');
 echo $json_result;
 $conn=null;
+}
 
 
+if(isset($_GET['hello'])){
+  runMyFunction();
+}
 
 
 
