@@ -12,7 +12,8 @@
     <div class="collapse navbar-collapse" id="myNavbar">
 		<div class="navbar-header">
 			<ul class="nav navbar-nav ">
-				<li><a style='height:50px;line-height:50px;'>阿伯拖吊紀錄下載</a></li>
+				<!--button type="button"--> 
+				<li><id="download_all" style='height:50px;line-height:50px;'>阿伯拖吊紀錄下載</a></li>
 		</div>
 	  
 		<ul class="nav navbar-nav navbar-right">

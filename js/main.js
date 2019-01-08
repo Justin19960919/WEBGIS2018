@@ -8,6 +8,7 @@ $(function() {
       $("#sidebar").hide();
       updateSize();
   });
+
   $(window).resize(function() {
       updateSize();
   });  
@@ -23,3 +24,23 @@ function updateSize(){
    map.updateSize();
   $("#accordion").accordion("refresh");   
 }
+
+
+/*
+// get value from myNavbar
+//inputGroupSelect01(weekday),02(time in day),03(month)
+var weekday=$('#inputGroupSelect01').val();
+var inDay=$('#inputGroupSelect02').val();
+var month=$('#inputGroupSelect03').val();
+*/
+$(function() {
+  $("#download_all").click(function() {
+      $.get("download.php",function(data,status){
+        alert("Data:"+ data + "\nStatus: " + status);
+      });
+  });
+});
+
+
+
+
