@@ -1,40 +1,38 @@
-
 <?php
-/*
-https://github.com/bmcbride/PHP-Database-GeoJSON/blob/master/mysql_geojson.php
-
-https://gis.stackexchange.com/questions/92809/how-can-we-generate-geojson-from-sql-data-with-latlong
-*/
-
-/*
- * Title:   MySQL to GeoJSON (Requires https://github.com/phayes/geoPHP)
- * Notes:   Query a MySQL table or view and return the results in GeoJSON format, suitable for use in OpenLayers, Leaflet, etc.
- * Author:  Bryan R. McBride, GISP
- * Contact: bryanmcbride.com
- * GitHub:  https://github.com/bmcbride/PHP-Database-GeoJSON
- */
-# Include required geoPHP library and define wkb_to_json function
 
 
+$db_servername = "127.0.0.1";     //localhost
+$db_username = "justin";
+$db_password = "justin0919";
+$db_database = "bicycle";
+$db_port = "3306"; 
 
-include_once('geoPHP/geoPHP.inc');
-function wkb_to_json($wkb) {
-    $geom = geoPHP::load($wkb,'wkb');
-    return $geom->out('json');
+
+try{
+  $conn = new PDO("mysql:host={$db_servername};port={$db_port};dbname={$db_database}", 
+                  $db_username, 
+                  $db_password,
+                  array(
+                    \PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8'  //important
+                  )
+                 );
+  $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+  echo "Connected successfully </br>";
+  
+}catch(PDOException $e)
+{
+  echo "database connection failed: ({$db_servername}:{$db_port})\n {$e->getMessage()}";
+  exit;
 }
-# Connect to MySQL database
-$conn = new PDO('mysql:host=127.0.0.1;dbname=bicycle','root','justin0919');
 
-# Build SQL SELECT statement and return the geometry as a WKB element
-$sql = 'SELECT *, AsWKB(SHAPE) AS wkb FROM bike_test';
+$sql = 'SELECT *, Latitude AS x, Longitude AS y FROM bike_test';
 
-# Try query or error
 $rs = $conn->query($sql);
 if (!$rs) {
     echo 'An SQL error occured.\n';
     exit;
 }
-# Build GeoJSON feature collection array
+
 $geojson = array(
    'type'      => 'FeatureCollection',
    'features'  => array()
@@ -42,19 +40,27 @@ $geojson = array(
 # Loop through rows to build feature arrays
 while ($row = $rs->fetch(PDO::FETCH_ASSOC)) {
     $properties = $row;
-
-    # Remove wkb and geometry fields from properties
-    unset($properties['wkb']);
-    unset($properties['SHAPE']);
+    # Remove x and y fields from properties (optional)
+    unset($properties['x']);
+    unset($properties['y']);
     $feature = array(
-         'type' => 'Feature',
-         'geometry' => json_decode(wkb_to_json($row['wkb'])),
-         'properties' => $properties
+        'type' => 'Feature',
+        'geometry' => array(
+            'type' => 'Point',
+            'coordinates' => array(
+                $row['x'],
+                $row['y']
+            )
+        ),
+        'properties' => $properties
     );
     # Add feature arrays to feature collection array
     array_push($geojson['features'], $feature);
 }
 header('Content-type: application/json');
-echo json_encode($geojson, JSON_NUMERIC_CHECK);
+echo json_encode($geojson, JSON_UNESCAPED_UNICODE);
 $conn = NULL;
+
+
+
 ?>
