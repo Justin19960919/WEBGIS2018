@@ -35,7 +35,22 @@ $(function() {
     });
   });
   */
-  
+  /*
+  $('#chooseBtn').click(function(){
+					var month=$('#month').val();
+					var day=$('#day').val();
+					var time=$('#time').val();
+
+					<?
+						require"getGeojson.php"
+					?>
+					
+					
+					
+					
+					});
+				});
+	*/			
   $(window).resize(function() {
       updateSize();
   });  

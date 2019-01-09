@@ -43,10 +43,11 @@
 		}
 	}
 	</script>
+	<form method='POST' action='getGeojson.php'>
   	<div class="form-group mb-3">
-		  <label  for="selectmonth" style='font-size:20px;color:white' >月份</label>
-		  <select class="form-control" id="selectmonth" onchange="changeday('selectday', this.value)">
-		    <option value="All">全部</option> 
+		  <label  for="month" style='font-size:20px;color:white'>月份</label>
+		  <select class="form-control" id="month"  name="month" onchange="changeday('day', this.value)" type='submit'>
+		    <option value="0">全部</option> 
 			<option value="9">9月</option>
 			<option value="10">10月</option>
 			<option value="11">11月</option>
@@ -55,16 +56,16 @@
   
 
 	<div class="form-group mb-3">
-		  <label  for="selectday" style='font-size:20px;color:white' >日期</label>
-		  <select class="form-control" id="selectday">
+		  <label  for="day" style='font-size:20px;color:white' >日期</label>
+		  <select class="form-control" id="day" name="day" type='submit'>
 			<option value="">全部</option> 
 			<option value="">若要選擇請先選擇月份!</option> 
 		  </select>
 	</div>
 	
 	<div class="form-group mb-3">
-		  <label  for="inputGroupSelect01" style='font-size:20px;color:white'>時間</label>
-		  <select class="form-control" id="inputGroupSelect01">
+		  <label  for="time" style='font-size:20px;color:white'>時間</label>
+		  <select class="form-control" id="time" name="time" type='submit'>
 		    <option value="dayAll">全天</option>
 			<option value="morning">上午</option>
 			<option value="noon">中午</option>
@@ -73,6 +74,7 @@
 			
 		  </select>
 	</div>
+	</form>
 	<button class="btn btn-primary" style="font-size:20px" >篩選</button>
 
   
