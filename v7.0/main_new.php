@@ -43,7 +43,7 @@
 		}
 	}
 	</script>
-	<form action="/getGeojson.php" method="post">
+	<form>
 		<div class="form-group mb-3">
 			  <label  for="month" style='font-size:20px;color:white'>月份</label>
 			  <select class="form-control" id="month"  name="month" onchange="changeday('day', this.value)" >
@@ -73,8 +73,8 @@
 				
 			  </select>
 		</div>
-		<input type='submit' class="btn btn-primary" style="font-size:20px" id="chooseBtn" value='篩選' >
 	</form>
+	<button class="btn btn-primary" style="font-size:20px" id="chooseBtn">篩選</button>
 	
 
   

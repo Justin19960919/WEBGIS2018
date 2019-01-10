@@ -160,7 +160,7 @@ var layers = {
         'title': '捷運線',
         'type': 'overlay',
         'layer': new ol.layer.Vector({
-            visible:true,
+            visible:false,
             source: new ol.source.Vector({
               format: new ol.format.GeoJSON(),
               url: './data/metroline.geojson',
@@ -291,26 +291,6 @@ $(function() {
     console.log("Clicked #chooseBtn")
     layers['bike_ntu'].layer.setVisible(true);
     layers['bike_ntu'].layer.setSource(loadJsonSourceWithAjax("./getGeojson.php"));
-
-/* use of ajax
-    var month=$('#month').val();
-    var day=$('#day').val();
-    var time=$('#time').val();  
-    console.log(month,day,time)
-    
-    $.ajax({
-      url:"./getGeojson.php",
-      type: 'POST',
-      data:{"month":month,"day":day,"time":time},  
-
-      success: function(result) {
-        console.log(result);
-        console.log("success delivered data.");
-        },
-      error: function(){
-          console.log('ajax error');
-        }
-    });  */ 
     
   });
 
