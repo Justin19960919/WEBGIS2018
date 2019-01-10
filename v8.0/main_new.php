@@ -34,6 +34,10 @@
 	function changeday(selectID, amonth)
 	{
 		while (document.all(selectID).options.length > 0) document.all(selectID).remove(0);
+		var nOption = document.createElement("OPTION");
+		  nOption.text='全部';
+		  nOption.value=0;
+		  document.all(selectID).add(nOption);
 		for (var i = 1; i <= days[amonth-1]; i++)
 		{
 		  var nOption = document.createElement("OPTION");
@@ -51,6 +55,7 @@
 				<option value="9">9月</option>
 				<option value="10">10月</option>
 				<option value="11">11月</option>
+				<option value="12">12月</option>
 			  </select>
 		</div>
 	  
