@@ -58,8 +58,8 @@
 		<div class="form-group mb-3">
 			  <label  for="day" style='font-size:20px;color:white' >日期</label>
 			  <select class="form-control" id="day" name="day" >
-				<option value="">全部</option> 
-				<option value="">若要選擇請先選擇月份!</option> 
+				<option value="0">全部</option> 
+				<option value="0">若要選擇請先選擇月份!</option> 
 			  </select>
 		</div>
 		
