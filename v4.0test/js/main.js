@@ -34,7 +34,10 @@ $(function() {
   $('#cancelBtn').click(function(){
 	  $('#dialog1').modal('hide')
   });
-  
+   $('#confirmBtn').click(function(){
+	  $('#dialog1').modal('hide')
+	  $('#dialog2').modal('hide')
+  }); 
 
 		
   $(window).resize(function() {

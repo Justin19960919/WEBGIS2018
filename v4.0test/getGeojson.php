@@ -45,7 +45,7 @@ try{
   exit;
 }
 
-$sql = 'SELECT *, Longitude AS x, Latitude AS y FROM bike_test WHERE month='.$month.',day'=$day.',time'<$timeEnd,',time'>$timeStart;
+$sql = 'SELECT *, Longitude AS x, Latitude AS y FROM bike_test WHERE month='.$month.',day='.$day.',time<='.$timeEnd.',time>='.$timeStart;
 
 
 $rs = $conn->query($sql);
